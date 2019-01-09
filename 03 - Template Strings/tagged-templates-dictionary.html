@@ -22,9 +22,30 @@
     JS: 'JavaScript'
   };
 
+  function addAbbrv(strings, ...values) {
+    // we want a new arr not values,
+    // because values will give us first, last, 'HTML'...
+    const abbrved = values.map(val => {
+      if (dict[val]) {
+        return `<abbr title="${dict[val]}">${val}</abbr>`
+      }
+      return val;
+    });
+
+    return strings.reduce((sentence, string, i) => {
+      return `${sentence}${string}${abbrved[i] || ''}`;
+    }, '');
+  }
+
   const first = 'Wes';
   const last = 'Bos';
 
+  const sentence = addAbbrv`Hello my name is ${first} ${last} and I love to code ${'HTML'}, ${'CSS'} and ${'JS'}`;
+
+  const bio = document.querySelector('.bio');
+  const p = document.createElement('p');
+  p.innerHTML = sentence;
+  bio.appendChild(p);
 </script>
 </body>
 </html>

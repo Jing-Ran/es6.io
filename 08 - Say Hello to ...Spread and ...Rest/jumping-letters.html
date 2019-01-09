@@ -30,7 +30,14 @@
   <h2 class="jump">SPREADS!</h2>
 
 <script>
-  
+  function addSpans(str) {
+    // const arr = [...str];
+    // return arr.map(item => `<span>${item}</span>`);
+    return [...str].map(item => `<span>${item}</span>`);
+  }
+  const jump = document.querySelector('.jump');
+  // const spanned = addSpans(jump.textContent);
+  jump.innerHTML = addSpans(jump.textContent).join('');
 </script>
 </body>
 </html>

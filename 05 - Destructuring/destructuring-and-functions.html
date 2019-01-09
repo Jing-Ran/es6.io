@@ -15,11 +15,15 @@
     };
     return converted;
   }
+  const { USD, GPB, AUD, MEX } = convertCurrency(100);
 
   function tipCalc({ total = 100, tip = 0.15, tax = 0.13 } = {}) {
     return total + (tip * total) + (tax * total);
   }
 
+  // const bill = tipCalc();
+  // let { total = 100, tip = 0.15, tax = 0.13 } equal to an empty obj {}
+  // so you don't need to pass any argument
   const bill = tipCalc({ tip: 0.20, total: 200 });
   console.log(bill);
 

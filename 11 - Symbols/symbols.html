@@ -6,8 +6,11 @@
 </head>
 <body>
 <script>
+  // Symbols can avoid naming collision
+  // because every symbol val returned from Symbol() is unique
   const wes = Symbol('Wes');
   const person = Symbol('Wes');
+  // wes isn't equal to person
 
   const classRoom = {
     [Symbol('Mark')] : { grade: 50, gender: 'male' },
@@ -15,10 +18,14 @@
     [Symbol('olivia')]: { grade: 80, gender: 'female' },
   };
 
+  // Symbols are not enumerable, which means you can't loop over them
+  // So you can use them to store private data
+  // Not using for...of because you can't use it within obj
   for (const person in classRoom) {
     console.log(person);
   }
 
+  // To access symbols, use getOwnPropertySymbols()
   const syms = Object.getOwnPropertySymbols(classRoom);
   const data = syms.map(sym => classRoom[sym]);
   console.log(data);

@@ -61,6 +61,26 @@
   </div>
 
   <script>
+    const box = document.querySelector('.box');
+    box.addEventListener('click', function() {
+      console.log(this);
+
+      let first = 'opening';
+      let second = 'open';
+
+      if (this.classList.contains(first)) {
+        [first, second] = [second, first];
+      }
+
+      this.classList.toggle(first);
+
+      // Use arrow fn, otherwise this is equal to window
+      // this inside a arrow fn will inherit "this value" from its parent fn
+      setTimeout(() => {
+        console.log(this);
+        this.classList.toggle(second);
+      }, 500);
+    });
   </script>
 
 </body>

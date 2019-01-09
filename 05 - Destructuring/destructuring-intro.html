@@ -14,6 +14,8 @@
     twitter: '@wesbos'
   };
 
+  // const first = person.first;
+  // const last = person.last;
   const { first, last, twitter } = person;
 
   const wes = {
@@ -29,12 +31,18 @@
       }
     }
   };
+  // const { twitter, facebook } = wes.links.social;
 
+  // Renaming
   const { twitter: tweet, facebook: fb } = wes.links.social;
 
   const settings = { width: 300, color: 'black' }  // height, fontSize
-  const { width = 100, height = 100, color = 'blue', fontSize = 25} = settings;
+  // const { width, height, color, fontSize } = settings;
+  // set default values
+  // const { width = 100, height = 100, color = 'blue', fontSize = 25} = settings;
 
+  // Obj destructuring with variable renaming & default values
+  const { w: width = 400, h: height = 500 } = { w: 800 };
 </script>
 </body>
 </html>
