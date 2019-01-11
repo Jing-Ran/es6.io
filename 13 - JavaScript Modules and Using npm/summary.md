@@ -29,3 +29,17 @@
     
     npm install --save-dev webpack-cli
     ```
+    
+5. Export
+    
+    Two types of export in ES6:
+    
+    * Default export:
+
+        Export as default, which means when you import, you can import as any name that you like.
+        
+        *Every module you have, can only have **one** default export*
+        
+    * Named export:
+
+        Export as the variable name, which means when import it, you must know the name. 

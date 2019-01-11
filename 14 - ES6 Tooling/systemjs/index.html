@@ -3,10 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <title>System JS</title>
+  <link src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/2.1.1/s.min.js">
 </head>
 <body>
-  <script src="https://jspm.io/system@0.19.js"></script>
+  <!-- <script src="jspm_packages/system.js"></script>
+  <script src="config.js"></script> -->
+  <!-- <script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+  <script src="https://jspm.io/system@0.19.js"></script> -->
+  <script src="jspm_packages/system.js"></script>
+  <script src="config.js"></script>
+
   <script>
+    // Configure SystemJS
+    System.config({
+      transpiler: 'plugin-babel'
+    });
+    System.import('./main.js');
+    // Create an entry point
 
   </script>
 </body>
