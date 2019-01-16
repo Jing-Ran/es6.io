@@ -8,7 +8,11 @@
 <script>
 
   function ajax(url) {
-    fetch(url).then(data => data.json()).then(data => dataGen.next(data))
+    fetch(url)
+      .then(data => data.json())
+      .then(data => dataGen.next(data))
+      // the data passed to next() will be assigned as
+      // a result of a yield expression
   }
 
   function* steps() {

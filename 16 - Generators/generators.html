@@ -6,6 +6,7 @@
 </head>
 <body>
 <script>
+  // when you create a generator fn, put an * after keyword function
   function* listPeople() {
     let i = 0;
     yield i;
@@ -15,6 +16,7 @@
     yield i;
   }
 
+  // Invoke a generator fn, and store it in a var
   const people = listPeople();
 
   const inventors = [
@@ -26,6 +28,7 @@
     { first: 'Nicolaus', last: 'Copernicus', year: 1473 },
     { first: 'Max', last: 'Planck', year: 1858 },
   ];
+
 
   function* loop(arr) {
     console.log(inventors);

@@ -6,12 +6,24 @@
 </head>
 <body>
 <script>
+  // Set is NOT index-based
   const people = new Set();
   people.add('Wes');
   people.add('Snickers');
   people.add('Kait');
 
-  for (const person of  people) {
+  console.log(people.size);
+  people.delete('Wes');
+  people.clear();
+
+  // SetIterator
+  const it = people.values();
+  it.next();
+  people.keys();
+  people.entries();
+
+
+  for (const person of people) {
     console.log(person);
   }
 
@@ -19,6 +31,8 @@
 
   const dogs = ['Snickers', 'Sunny'];
   const dogSet = new Set(dogs);
+
+  console.log(students.has('Wes'));
 
 </script>
 </body>

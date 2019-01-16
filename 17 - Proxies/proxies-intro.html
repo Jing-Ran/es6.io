@@ -6,7 +6,13 @@
 </head>
 <body>
 <script>
-  const person = { name: 'Wes', age: 100 };
+  // Proxies allow you override default behaviors of an operation on an object
+  const person = { name: 'Wes', age: 'a hundred' };
+  // Proxy takes two things:
+  // - 1. target: what obj you'd like to proxy
+  // - 2. handler (an obj): the operation you wish to rewrite
+  // Traps: override default operations;
+  // each thing inside the handler is called a trap
   const personProxy = new Proxy(person, {
     get(target, name) {
       // console.log('someone is asking for ', target, name);
@@ -19,7 +25,7 @@
     }
   });
 
-  personProxy.name = 'Wesley';
+  personProxy.nicknm = 'Wesley';
 </script>
 </body>
 </html>

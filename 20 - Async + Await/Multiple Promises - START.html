@@ -10,9 +10,35 @@
     async function go() {
       const p1 = fetch('https://api.github.com/users/wesbos');
       const p2 = fetch('https://api.github.com/users/stolinski');
+
+      // Wait for both to come back
+      const res = await Promise.all([p1, p2]);
+      console.log(res);
+      // this res is not the data we want, need .json()
+      // We can attached .then(r => r.json()) at the end of p1 and p2
+      // Or use map
+      const dataPromises = res.map(r => r.json());
+      const wAndS = await Promise.all(dataPromises);
+      console.log(wAndS);
+      // Array destructure
+      const [w, s] = await Promise.all(dataPromises);
+      console.log(w, s);
     }
 
-    go();
+    // go();
+
+    // OR
+    async function getData(names) {
+      const promises = names
+        .map(name =>
+          fetch(`https://api.github.com/users/${name}`).then(r => r.json())
+        );
+
+      const [w, s] = await Promise.all(promises);
+      console.log(w, s);
+    }
+
+    getData(['wesbos', 'stolinski']);
   </script>
 </body>
 

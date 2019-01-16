@@ -6,21 +6,33 @@
 </head>
 <body>
 <script>
-  function Dog(name, breed) {
-    this.name = name;
-    this.breed = breed;
+  // Class declaration
+  class Dog {
+    constructor(name, breed) {
+      this.name = name;
+      this.breed = breed;
+    } // no comma here, when you put a method - no comma
+    bark() {
+      console.log(`Bark Bark! My name is ${this.name}`);
+    }
+    cuddle() {
+      console.log(`I love you owner!`);
+    }
+    static info() {
+      console.log('Dogs are the best');
+    }
+    get description() {
+      return `${this.name} is a ${this.breed} type of dog`;
+    }
+
+    set nicknames(value) {
+      this.nick = value.trim();
+    }
   }
-
-  Dog.prototype.bark = function() {
-    console.log(`Bark Bark! My name is ${this.name}`);
-  };
-
-  Dog.prototype.cuddle = function() {
-    console.log(`I love you owner!`);
-  };
 
   const snickers = new Dog('Snickers', 'King Charles');
   const sunny = new Dog('Sunny', 'Golden Doodle');
+  console.log(snickers.description);
 
 </script>
 </body>

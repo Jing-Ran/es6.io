@@ -9,7 +9,40 @@
 
 <body>
   <script>
+    // const res = fetch('http://api.github.com/users/wesbos');
+    // console.log(res);
+    // res is a Promise
 
+    // Fetch API review
+    // fetch('api.github.com/users/wesbos')
+    // .then(res => {
+    //   // res is a Response, not JSON
+    //   return res.json();
+    //   // res.json() returns a Promise that resolves w/ the result
+    //   // of parsing the body text as JSON
+    // })
+    // .then(res => {
+    //   console.log(res);
+    // })
+    // .catch(err => { // catch error
+    //   // Error: fetch('api.github.com/users/wesbos')
+    //   console.error('Oh No!!');
+    //   console.error(err);
+    // });
+
+
+    const video = document.querySelector('.handsome');
+
+    // see JS30 - D19
+    navigator.mediaDevices.getUserMedia({ video: true })
+    .then(mediaStream => {
+      video.srcObject = mediaStream;
+      video.load();
+      video.play();
+    })
+    .catch(err => {
+      console.log(err);
+    });
   </script>
 </body>
 

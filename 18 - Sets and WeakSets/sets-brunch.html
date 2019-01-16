@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -15,8 +15,11 @@
   const line = brunch.values();
   console.log(line.next().value);
   console.log(line.next().value);
+  console.log(brunch, line);
+  // when you call next, the item is removed from the iterator
   brunch.add('Heather');
   brunch.add('Snickers');
+  console.log(brunch, line);
   console.log(line.next().value);
   console.log(line.next().value);
   console.log(line.next().value);

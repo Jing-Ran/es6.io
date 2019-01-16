@@ -7,7 +7,102 @@
 
 <body>
   <script>
+    function breathe(amount) {
+      return new Promise((resolve, reject) => {
+        // Set a limitation to test reject - say 500ms is the smallest amount
+        if (amount < 500) {
+          reject(`That is too small of a value`);
+        }
+        setTimeout(() => resolve(`Done for ${amount}ms`), amount);
+      });
+    }
 
+    // breathe(1000)
+    // .then(res => {
+    //   console.log(res);
+    //   // Do more breathe
+    //   return breathe(2000);
+    // })
+    // .then(res => {
+    //   console.log(res);
+    //   // Do more breathe
+    //   return breathe(500);
+    // })
+    // .then(res => {
+    //   console.log(res);
+    //   // Do more breathe
+    //   return breathe(300);
+    // })
+    // .then(res => {
+    //   console.log(res);
+    //   // Do more breathe
+    //   return breathe(1300);
+    // })
+    // .then(res => {
+    //   console.log(res);
+    // })
+    // // Catch the reject
+    // .catch(err => {
+    //   console.error(err);
+    //   console.error('You screwed up');
+    // });
+
+
+    // To make the code above better - use async await
+    // Async await is built on top of Promises
+
+    // await must be used in an async fn
+    // const go = async () => {...};
+    async function go(name, last) {
+      // when go() fn takes argument
+      console.log(`starting for ${name} ${last}`);
+      // The await holds for an amount of time and waits for response/reject
+      const r1 = await breathe(600);
+      console.log(r1);
+      const r2 = await breathe(300);
+      console.log(r2);
+      const r3 = await breathe(1600);
+      console.log(r3);
+      const r4 = await breathe(700);
+      console.log(r4);
+      console.log('end');
+    }
+    // go();
+
+    // METHOD 1: To catch an error, we can use try...catch
+    async function go1() {
+      try {
+        console.log('start');
+        const r1 = await breathe(600);
+        console.log(r1);
+        const r2 = await breathe(300);
+        console.log(r2);
+        const r3 = await breathe(1600);
+        console.log(r3);
+        console.log('end');
+      } catch(err) {
+        console.error('Oh Nooooo!!');
+        console.error(err);
+      }
+    }
+
+    // METHOD 2: use a high order fn
+    function catchErrors(fn) {
+      return function(...args) {
+        // console.log(fn);
+        // the fn() returns a promise so we can use the catch() directly
+        // When the fn() takes arguments - use spread
+        return fn(...args).catch(err => {
+          console.error('Oh Nooooo!!');
+          console.error(err);
+        });
+      }
+    }
+
+    const wrappedFn = catchErrors(go);
+    wrappedFn('wes', 'bos');
+
+    // But what if the go() fn takes an argument
   </script>
 </body>
 
