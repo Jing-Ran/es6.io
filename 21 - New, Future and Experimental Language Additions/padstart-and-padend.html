@@ -8,9 +8,13 @@
 <body>
   <script>
     const strings = ['short', 'medium size', 'this is really really long', 'this is really reall really really really really long'];
-    const longestString = strings.sort(str => str.length).map(str => str.length)[0];
-
-    strings.forEach(str => console.log(str.padStart(longestString)));
+    const length =
+      // sort the strings by each item's length, from longest to shortest
+      strings.sort((a, b) => b.length - a.length)
+      // get the length of each item, return the first/longest
+      .map(str => str.length)[0];
+    console.log(length);
+    strings.forEach(str => console.log(str.padStart(length)));
   </script>
 </body>
 

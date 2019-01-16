@@ -13,10 +13,23 @@
       hoodies: 4,
       shoes: 11
     };
+    // They are all iterable
+    console.log(Object.keys(inventory));
+    console.log(Object.values(inventory));
+    console.log(Object.entries(inventory));
 
     // Make a nav for the inventory
-
+    const nav = Object.keys(inventory)
+      .map(item => `<li>${item}</li>`).join('');
+    console.log(nav);
     // tell us how many values we have
+    const totalNum = Object.values(inventory)
+      .reduce((total, cur) => total + cur, 0);
+    console.log(totalNum);
+    // Print an inventory list with numbers
+    Object.entries(inventory).forEach(([key, val]) => {
+      console.log(key, val);
+    });
   </script>
 </body>
 
